@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ("partials/head") %>
+    <title>Course Search - iStudyAbroad</title>
+</head>
+
+<body class="m-0 p-0 font-lato">
+    <%- include ("partials/nav") %>
+    <div class="header">
+        <div class="poster">
+            <img src="/img/Poster.jpeg">
+        </div>
+        <div class="search_bar" id="searchForm">
+            <form action="/">
+                <div class="keywords">
+                    <div class="d-flex justify-content-center align-items-center"><input type="text" name="keywords"
+                            class="align-self-center" placeholder=<%- statics.what %>></div>
+                </div>
+                <div class="placeToGo">
+                    <div class="d-flex justify-content-center align-items-center"><input type="text" name="placeToGo"
+                            placeholder=<%- statics.where %>>
+                        <img type="submit" value="Submit" form="searchForm" class="searchSubmit"
+                            src="/icon/search_01.svg" /></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="filter d-flex justify-content-between">
+        <div class="flex">
+            <div class="Lato uppercase"><span><%= statics.sort %></span></div>
+            <div class="d-flex filter-button">
+                <button><%=statics.date%></button>
+                <button><%=statics.fee%></button>
+                <button><%=statics.dur%></button>
+                <button><%=statics.rank%></button>
+                <div class="filBut"><a href="#filter"><button><%=statics.filter%></button></a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="filter">
+        <div class="wrapper container">
+            <div class="row">
+                <div class="col p-0">
+                    <a id="clear"><%= statics.clear %></a>
+                </div>
+                <div class="col text-center">
+                    <h2><%= statics.filter %> </h2>
+                </div>
+                <div class="col">
+                    <a href="#searchForm" class="close">&times;</a>
+                </div>
+            </div>
+            %>
+            <div class="filterContent row">
+                <div class="filterContainer d-flex">
+                    <form action="/course/<%=statics.lang%>/filter/" method="get" id="myForm">
+                        <label><%=statics.discipline%>:</label>
+                        <div class="break"></div>
+                        <% for (var i=0; i < statics.disciplines_id.length; i++) { %>
+                        <button type="button" id=<%="discipline_id_" + i%>
+                            onclick="checkbox_discipline('<%= i %>'); return false;"><%=statics.disciplines_id[i]%></button>
+                        <input type="radio" name="discipline" value="<%=i + 1%>"
+                            id=<%="discipline_" + i%> hidden>
+                        <% }; %>
+                        <div class="break"></div>
+                        <label><%-statics.country%>:</label>
+                        <div class="break"></div>
+                        <% for (let country in countries) { %>
+                        <button type="button" id=<%="country_id_" + country%>
+                            onclick="checkbox_country('<%= country %>'); return false;" disabled class="active"><%=countries[country].country%></button>
+                        <input type="radio" name="country" value=<%=countries[country].countryCode%>
+                            id=<%="country_" + country%> hidden>
+                        <% }; %>
+                        <div class="break"></div>
+                        <label><%=statics.province%>:</label>
+                        <div class="break"></div>
+                        <% for (let province in countries["ca"].provinces) { %>
+                        <button type="button" id=<%="province_id_" + province%>
+                            onclick="checkbox_province('<%= province %>'); return false;"><%=countries["ca"].provinces[province]%></button>
+                        <input type="radio" name="province" value=<%=countries["ca"].provinceCode[province]%>
+                            id=<%="province_" + province%> hidden>
+                        <% }; %>
+                        <div class="break"></div>
+                        <label><%=statics.city%>:</label>
+                        <div class="break"></div>
+                        <% for (let city in countries["ca"].cities) { %>
+                        <% for (let j=0; j < countries["ca"].cities[city].length; j++) { %>
+                        <button type="button" id=<%=city + j + "_id" %>
+                            onclick="checkbox_city('<%= city%>', '<%= j  %>'); return false;" style="display: none;"><%=countries["ca"].cities[city][j]%></button>
+                        <input type="radio" name="city" value="<%= (j+1) / 100 + countries["ca"].provinceCode[city]%>"
+                            id=<%=city + j%> hidden>
+                        <% }; %>
+                        <% }; %>
+                        <div class="break"></div>
+                        <label><%=statics.maxFee%></label>
+                        <div class="break"></div>
+                        <input type="number" name="maxfee" placeholder="HKD$" min="0" step="1000">
+                        <div class="break"></div>
+                        <label><%=statics.expdur%>:</label>
+                        <div class="break"></div>
+                        <input type="number" name="mindur" placeholder="8" min="0" step="1">
+                        <%=statics.month%><%=statics.to%><input type="number" name="maxdur" placeholder="24" min="0"
+                            step="1"><%=statics.month%>
+                        <div class="break"></div>
+                        <label><%=statics.ieltsBelow%>:</label>
+                        <div class="break"></div>
+                        <input type="number" name="ieltsBelow" placeholder="6" min="0" step="0.5">
+                    </form>
+                </div>
+            </div>
+            <div class="row d-flex text-center submit"><button type="submit" form="myForm"><%=statics.apply%></button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="result" id="result">
+        <div class="title">
+            <div class="card-item like">
+            </div>
+            <div class="card-item courseDetail-t">
+                <p><strong><%=statics.programeDetail%></strong></p>
+            </div>
+            <div class="card-item loc-t">
+                <p><strong><%=statics.location%></strong></p>
+            </div>
+            <div class="card-item fee-t">
+                <p><strong><%=statics.fee%></strong></p>
+            </div>
+            <div class="card-item dur-t">
+                <p><strong><%=statics.dur%></strong></p>
+            </div>
+            <div class="card-item term-t">
+                <p><strong><%-statics.term%></strong></p>
+            </div>
+            <div class="card-item eng-t">
+                <p><strong><%=statics.eng%></strong></p>
+            </div>
+            <div class="card-item permit-t">
+                <p><strong><%=statics.permit%></strong></p>
+            </div>
+        </div>
+        <div class="cardGp">
+
+            <% courses.forEach(function(course) { %>
+            <div class="card">
+                <div class="card-item like">
+                    <p><strong><img src="/icon/heart.svg" width="22px"></strong></p>
+                </div>
+                <div class="card-item courseDetail">
+                    <div class="name">
+                        <p><strong><%= course.name %></strong></p>
+                    </div>
+                    <div>
+                        <p><%= course.discipline %></p>
+                    </div>
+                    <div class="mb-1">
+                        <p><%= course.level %> / <%= course.mode %></p>
+                    </div>
+                    <div class="inst">
+                        <p><strong><%= course.Institution %></strong></p>
+                    </div>
+                    <div class="rank">
+                        <p>ARWU</p>
+                    </div>
+                </div>
+                <div class="card-item loc">
+                    <p><%= course.city %>, <%= course.country %></p>
+                </div>
+                <div class="card-item fee">
+                    <p><%= course.fee %> <%= course.currency %> / <%= course.period %></p>
+                </div>
+                <div class="card-item dur">
+                    <p><%= Math.floor(course.duration / 12) %>
+                        <%=statics.year%><%if (course.duration != Math.floor(course.duration / 12)*12) { %>
+                        ,<br><%= course.duration - Math.floor(course.duration / 12) * 12 %> <%=statics.month%>
+                        <% }; %></p>
+                </div>
+                <div class="card-item term">
+                    <p><%- monthNames[course.startDate.getMonth()] %>,&nbsp<%= course.startDate.getFullYear() %></p>
+                </div>
+                <div class="card-item eng">
+                    <p><%= course.IELTS %></p>
+                </div>
+                <div class="card-item permit">
+                    <div class="permit-item">
+                        <p><%=statics.studentPermit%></p><img src="/icon/checked.svg">
+                    </div>
+                    <div class="permit-item">
+                        <p><%=statics.PGWP%></p><img src="/icon/unchecked.svg">
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+
+        </div>
+    </div>
+
+
+</body>
+<%- include ("partials/bottom") %>

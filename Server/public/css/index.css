@@ -1,0 +1,474 @@
+body,
+html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    position: fixed;
+    padding: 20px 100px !important;
+    background-color: rgba(255, 255, 255, 0.8);
+    ;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    transition: top 0.6s;
+}
+
+.navbar-nav {
+    padding-left: 100px;
+}
+
+.navbar li {
+    padding-right: 30px;
+}
+
+.header {
+    position: relative;
+    top: 106px;
+    height: 100%;
+}
+
+.poster {
+    height: 60%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.poster img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.search_bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.keywords,
+.placeToGo {
+    box-sizing: border-box;
+    width: 333px;
+    height: 60px;
+    background: #FFFFFF;
+    /* dark green */
+    border: 1px solid #066453;
+    display: inline-block;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.keywords {
+    border-radius: 8px 0px 0px 8px;
+    margin-right: -2px;
+}
+
+.placeToGo {
+    border-radius: 0px 8px 8px 0px;
+    margin-left: -2px;
+}
+
+.keywords input {
+    width: 280px;
+    height: 30px;
+    border: 0px;
+
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    /* dark green */
+    color: #066453;
+    outline: none;
+}
+
+.placeToGo input {
+    width: 254px;
+    height: 30px;
+    border: 0px;
+    padding-right: 4px;
+
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    /* dark green */
+    color: #066453;
+    outline: none;
+}
+
+
+.placeToGo .d-flex {
+    height: 60px;
+    width: 333px;
+}
+
+.keywords .d-flex {
+    height: 60px;
+    width: 333px;
+}
+
+.searchSubmit {
+    width: 26px;
+    height: 26px;
+    left: 1002px;
+    top: 541px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.filter {
+    height: 100px;
+    width: 100%;
+    margin: 80px 150px;
+}
+
+.filter .flex {
+    width: 100%;
+    margin-right: 300px;
+}
+
+.filter .d-flex {
+    width: 100%;
+    margin-right: 300px;
+}
+
+.Lato {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 24px;
+    padding-bottom: 20px;
+}
+
+.filter-button button {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #066453;
+    width: 150px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #066453;
+    border-radius: 20px;
+    margin-right: 22px;
+    outline: none;
+}
+
+.filBut {
+    justify-self: flex-end;
+    margin-left: auto;
+}
+
+.filBut button {
+    width: 90px;
+    height: 40px;
+    background: #066453;
+    color: #FFFFFF;
+    border-radius: 30px;
+    margin-right: 0px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 20;
+    overflow: scroll;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.wrapper {
+    margin: 70px auto;
+    padding: 30px 50px;
+    background: white;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.custom-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.wrapper h2 {
+    width: 100%;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #066453;
+}
+
+.wrapper .filterContainer {
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 20px 0px;
+}
+
+.wrapper .filterContent {
+    max-height: 100%;
+}
+
+.wrapper input[type=button],
+button {
+    box-sizing: border-box;
+    width: auto;
+    height: 33.6px;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 0.516139px solid #AAAAAA;
+    border-radius: 21.348px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    padding: 0px 12px;
+    margin: 6px 4px;
+    letter-spacing: 0.145em;
+    color: #000000;
+}
+
+.wrapper form label {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin: 25px 0px 10px 0px;
+}
+
+.wrapper .active {
+    display: inline-block;
+}
+
+.wrapper .active button {
+    color: #FFFFFF;
+    background: #066453;
+}
+
+.active {
+    background-color: #066453;
+    color: #FFFFFF;
+}
+
+.wrapper input[type=text] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #066453;
+    border-radius: 5px;
+    box-sizing: 6px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.wrapper input[type=number] {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #066453;
+    border-radius: 5px;
+    box-sizing: 6px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    outline: none;
+    margin: 0px 5px;
+}
+
+.submit button {
+    background-color: #066453;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    outline: none;
+    margin-top: 20px;
+}
+
+
+.result {
+    margin: 0px 150px 0px 150px;
+    padding-bottom: 150px;
+}
+
+.title {
+    width: 100%;
+    padding: 25px 25px 0px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card {
+    width: 100%;
+    height: 160px;
+    padding: 25px;
+    margin-top: 27px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #FFFFFF;
+    box-shadow: 0px 1.77924px 17.7924px -2.66885px rgba(45, 112, 100, 0.25);
+    border-radius: 8px;
+}
+
+.card-item {
+    font-size: 14px;
+    font-family: 'Noto Sans HK';
+    text-align: start;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.card-item p {
+    margin: 0px;
+}
+
+.like {
+    width: 35px;
+}
+
+.courseDetail {
+    display: grid;
+    overflow: scroll;
+    grid-template-areas: 'auto''auto''auto''auto''auto';
+    width: 280px;
+    overflow: scroll;
+    height: 111px;
+}
+
+.courseDetail .name {
+    font-size: 16px;
+    height: 24px;
+    overflow: scroll;
+}
+
+.courseDetail .mb-1 {
+    color: #066453;
+}
+
+.courseDetail .inst {
+    height: 21px;
+    overflow: scroll;
+}
+
+.courseDetail .rank {
+    font-size: 13px;
+    height: 20px;
+    overflow: scroll;
+}
+
+.courseDetail-t {
+    width: 280px;
+}
+
+.loc {
+    width: 130px;
+    height: 110px;
+    overflow: scroll;
+}
+
+.loc-t {
+    width: 130px;
+}
+
+.fee {
+    width: 120px;
+    height: 110px;
+    overflow: scroll;
+}
+
+.fee-t {
+    width: 120px;
+}
+
+.dur {
+    width: 70px;
+    height: 110px;
+    overflow: scroll;
+}
+
+.dur-t {
+    width: 70px;
+}
+
+.term {
+    width: 100px;
+    overflow: scroll;
+    height: 110px;
+}
+
+.term-t {
+    width: 100px;
+}
+
+.eng {
+    width: 60px;
+    overflow: scroll;
+    height: 110px;
+}
+
+.eng-t {
+    width: 60px;
+}
+
+.permit {
+    width: 150px;
+    display: grid;
+    grid-template-areas: 'auto''auto';
+    overflow: scroll;
+    height: 110px;
+}
+
+.permit-t {
+    width: 150px;
+}
+
+.permit-item {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
