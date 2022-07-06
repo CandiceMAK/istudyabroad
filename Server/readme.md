@@ -10,6 +10,11 @@ GOOGLE_CLIENT_ID=217190995206-11k4ib0o3aj6ht18uqcugecmsh0eqqrq.apps.googleuserco
 GOOGLE_CLIENT_SECRET=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
 SECRET=MYSECRET
 
+DB_CONNECT=mongodb+srv://uexchange:uexchangepw@cluster0.aordy.mongodb.net/Demo?retryWrites=true&w=majority
+GOOGLE_CLIENT_ID=217190995206-11k4ib0o3aj6ht18uqcugecmsh0eqqrq.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+SECRET=MYSECRET
+
 ### Steps:
 1. Open Project in VScode
 2. npm init
